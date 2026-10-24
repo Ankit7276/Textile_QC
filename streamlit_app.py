@@ -20,7 +20,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 
 from fabric_analyzer import _np, analyze
 
-st.set_page_config(page_title="LoomLab | Fabric quality", page_icon="🧵", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="LoomLab | Fabric quality", page_icon="🧵", layout="wide", initial_sidebar_state="auto")
 DB_PATH = os.environ.get("LOOMLAB_DB_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "loomlab_history.db"))
 
 # Theme-aware styles use Streamlit's active theme tokens. The inspection header is intentionally green in both themes.
@@ -50,11 +50,9 @@ div[data-testid="stExpander"]{background:color-mix(in srgb,Canvas 94%,CanvasText
   .hero { padding: 1rem 1.1rem; border-radius: 14px; }
   .hero h1 { font-size: 1.35rem; line-height: 1.25; }
   .hero p { font-size: .86rem; }
-  [data-testid="stAppViewContainer"] { position:relative; z-index:0 !important; }
-  [data-testid="stHeader"] { z-index:999990 !important; }
-  [data-testid="stSidebar"] { z-index:1000001 !important; isolation:isolate; }
-  [data-testid="stSidebar"] > div:first-child { position:relative; z-index:1000001; background-color:Canvas !important; }
-  [data-testid="stSidebar"] > div:first-child { box-shadow: 8px 0 28px rgba(0,0,0,.22); }
+  /* Let Streamlit control the drawer position, width, overlay, and stacking on phones. */
+  [data-testid="stSidebar"] > div:first-child { background-color:Canvas !important; }
+  [data-testid="stSidebar"] { box-shadow: 8px 0 28px rgba(0,0,0,.22); }
   [data-testid="stHorizontalBlock"] { flex-wrap: wrap !important; gap: .65rem !important; }
   [data-testid="stHorizontalBlock"] > [data-testid="column"] { min-width: calc(50% - .4rem) !important; flex: 1 1 calc(50% - .4rem) !important; }
   .stTabs [data-baseweb="tab-list"] { gap: .5rem; overflow-x: auto; flex-wrap: nowrap; }
