@@ -28,23 +28,23 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
 html,body,[class*="css"]{font-family:'DM Sans',sans-serif}
-.stApp{background:var(--background-color);color:var(--text-color)}
+.stApp{color-scheme:light dark;background-color:Canvas;color:CanvasText}
 .block-container{padding-top:1.35rem;max-width:1450px}
-[data-testid="stSidebar"]{background:var(--secondary-background-color);border-right:1px solid color-mix(in srgb,var(--text-color) 13%,transparent)}
+[data-testid="stSidebar"]{background-color:Canvas;border-right:1px solid color-mix(in srgb,CanvasText 13%,transparent)}
 .hero{background:linear-gradient(120deg,#183d30,#276b4e);color:#fff;padding:1.35rem 1.65rem;border-radius:18px;margin-bottom:1.1rem}
 .hero h1{font-family:Manrope,sans-serif;font-size:1.75rem;margin:0;color:#fff}
 .hero p{color:#e0eee6;margin:.35rem 0 0;font-size:.94rem}
 .eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.7rem;font-weight:700;opacity:.82;margin-bottom:.4rem}
-div[data-testid="stMetric"]{background:var(--secondary-background-color);color:var(--text-color);border:1px solid color-mix(in srgb,var(--text-color) 13%,transparent);padding:.85rem 1rem;border-radius:14px;box-shadow:0 2px 8px color-mix(in srgb,var(--text-color) 6%,transparent)}
-div[data-testid="stMetricLabel"],div[data-testid="stMetricLabel"] p{color:var(--text-color);opacity:.78}
-div[data-testid="stMetricValue"]{color:var(--text-color)}
-div[data-testid="stExpander"]{background:var(--secondary-background-color);border:1px solid color-mix(in srgb,var(--text-color) 13%,transparent);border-radius:12px}
-.stTabs [data-baseweb="tab"]{color:var(--text-color)}
-.small-note{color:var(--text-color);opacity:.72;font-size:.84rem}
-/* Keep the mobile drawer opaque and above the main page during its slide transition. */
+div[data-testid="stMetric"]{background:color-mix(in srgb,Canvas 94%,CanvasText 6%);color:CanvasText;border:1px solid color-mix(in srgb,CanvasText 13%,transparent);padding:.85rem 1rem;border-radius:14px;box-shadow:0 2px 8px color-mix(in srgb,CanvasText 6%,transparent)}
+div[data-testid="stMetricLabel"],div[data-testid="stMetricLabel"] p{color:CanvasText;opacity:.78}
+div[data-testid="stMetricValue"]{color:CanvasText}
+div[data-testid="stExpander"]{background:color-mix(in srgb,Canvas 94%,CanvasText 6%);border:1px solid color-mix(in srgb,CanvasText 13%,transparent);border-radius:12px}
+.stTabs [data-baseweb="tab"]{color:CanvasText}
+.small-note{color:CanvasText;opacity:.72;font-size:.84rem}
+/* Streamlit does not expose --secondary-background-color on the embedded app. Use system canvas colors and preserve its native drawer width/slide distance. */
 [data-testid="stSidebar"],
 [data-testid="stSidebar"] > div:first-child,
-[data-testid="stSidebarContent"] { background-color:var(--secondary-background-color) !important; opacity:1 !important; }
+[data-testid="stSidebarContent"] { background-color:Canvas !important; opacity:1 !important; }
 @media (max-width: 700px) {
   .block-container { padding: .7rem .8rem 2rem; }
   .hero { padding: 1rem 1.1rem; border-radius: 14px; }
@@ -52,8 +52,8 @@ div[data-testid="stExpander"]{background:var(--secondary-background-color);borde
   .hero p { font-size: .86rem; }
   [data-testid="stAppViewContainer"] { position:relative; z-index:0 !important; }
   [data-testid="stHeader"] { z-index:999990 !important; }
-  [data-testid="stSidebar"] { min-width:min(88vw,340px) !important; max-width:min(88vw,340px) !important; z-index:1000001 !important; isolation:isolate; }
-  [data-testid="stSidebar"] > div:first-child { position:relative; z-index:1000001; background-color:var(--secondary-background-color) !important; }
+  [data-testid="stSidebar"] { z-index:1000001 !important; isolation:isolate; }
+  [data-testid="stSidebar"] > div:first-child { position:relative; z-index:1000001; background-color:Canvas !important; }
   [data-testid="stSidebar"] > div:first-child { box-shadow: 8px 0 28px rgba(0,0,0,.22); }
   [data-testid="stHorizontalBlock"] { flex-wrap: wrap !important; gap: .65rem !important; }
   [data-testid="stHorizontalBlock"] > [data-testid="column"] { min-width: calc(50% - .4rem) !important; flex: 1 1 calc(50% - .4rem) !important; }
