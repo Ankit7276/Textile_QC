@@ -41,6 +41,26 @@ div[data-testid="stMetricValue"]{color:var(--text-color)}
 div[data-testid="stExpander"]{background:var(--secondary-background-color);border:1px solid color-mix(in srgb,var(--text-color) 13%,transparent);border-radius:12px}
 .stTabs [data-baseweb="tab"]{color:var(--text-color)}
 .small-note{color:var(--text-color);opacity:.72;font-size:.84rem}
+/* Keep the slide-out navigation opaque: mobile browsers composite the sidebar above the page. */
+[data-testid="stSidebar"],
+[data-testid="stSidebar"] > div:first-child,
+[data-testid="stSidebarContent"] { background-color:var(--secondary-background-color) !important; opacity:1 !important; }
+@media (max-width: 700px) {
+  .block-container { padding: .7rem .8rem 2rem; }
+  .hero { padding: 1rem 1.1rem; border-radius: 14px; }
+  .hero h1 { font-size: 1.35rem; line-height: 1.25; }
+  .hero p { font-size: .86rem; }
+  [data-testid="stSidebar"] { min-width: min(88vw, 340px) !important; max-width: min(88vw, 340px) !important; }
+  [data-testid="stSidebar"] > div:first-child { box-shadow: 8px 0 28px rgba(0,0,0,.22); }
+  [data-testid="stHorizontalBlock"] { flex-wrap: wrap !important; gap: .65rem !important; }
+  [data-testid="stHorizontalBlock"] > [data-testid="column"] { min-width: calc(50% - .4rem) !important; flex: 1 1 calc(50% - .4rem) !important; }
+  .stTabs [data-baseweb="tab-list"] { gap: .5rem; overflow-x: auto; flex-wrap: nowrap; }
+  .stTabs [data-baseweb="tab"] { white-space: nowrap; padding: .65rem .35rem; }
+}
+@media (max-width: 430px) {
+  [data-testid="stHorizontalBlock"] > [data-testid="column"] { min-width: 100% !important; flex: 1 1 100% !important; }
+  div[data-testid="stMetric"] { padding: .7rem .8rem; }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -341,6 +361,7 @@ with guide_tab:
 """)
 
 st.caption("LoomLab is an inspection aid. Verify important findings visually and validate thresholds against your fabrics and process.")
+
 
 
 
