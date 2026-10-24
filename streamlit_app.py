@@ -20,7 +20,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 
 from fabric_analyzer import _np, analyze
 
-st.set_page_config(page_title="LoomLab | Fabric quality", page_icon="🧵", layout="wide", initial_sidebar_state="auto")
+st.set_page_config(page_title="LoomLab | Fabric quality", page_icon="🧵", layout="wide", initial_sidebar_state="collapsed")
 DB_PATH = os.environ.get("LOOMLAB_DB_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "loomlab_history.db"))
 
 # Theme-aware styles use Streamlit's active theme tokens. The inspection header is intentionally green in both themes.
