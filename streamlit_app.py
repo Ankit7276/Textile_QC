@@ -13,22 +13,23 @@ st.set_page_config(page_title="LoomLab | Fabric quality", page_icon="🧵", layo
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
-:root { --ink:#182923; --muted:#718078; --green:#237a5b; --line:#e6ebe7; --soft:#f4f8f5; }
 html, body, [class*="css"] { font-family:'DM Sans',sans-serif; }
-.stApp { background: #f7f9f7; color:var(--ink); }
+.stApp { background:var(--background-color); color:var(--text-color); }
 .block-container { padding-top:1.5rem; max-width:1400px; }
-[data-testid="stSidebar"] { background:#fff; border-right:1px solid var(--line); }
-.hero { background:linear-gradient(120deg,#183d30,#276b4e); color:white; padding:1.45rem 1.7rem; border-radius:18px; margin-bottom:1.2rem; }
-.hero h1 { font-family:Manrope,sans-serif; font-size:1.8rem; margin:0; color:white; }
-.hero p { color:#d7e9df; margin:.35rem 0 0; font-size:.95rem; }
-.eyebrow { text-transform:uppercase; letter-spacing:.13em; font-size:.7rem; font-weight:700; opacity:.75; margin-bottom:.45rem; }
-div[data-testid="stMetric"] { background:white; border:1px solid var(--line); padding:1rem 1.05rem; border-radius:14px; box-shadow:0 2px 8px #183d3008; }
-div[data-testid="stMetricLabel"] { color:var(--muted); }
-.stTabs [data-baseweb="tab-list"] { gap:1.15rem; border-bottom:1px solid var(--line); }
-.stTabs [data-baseweb="tab"] { padding: .75rem .15rem; }
-div[data-testid="stExpander"] { background:white; border:1px solid var(--line); border-radius:12px; }
-.upload-card { background:white; border:1px dashed #b9c9bf; border-radius:16px; padding:2rem; text-align:center; color:var(--muted); }
-.small-note { color:var(--muted); font-size:.84rem; }
+[data-testid="stSidebar"] { background:var(--secondary-background-color); border-right:1px solid color-mix(in srgb, var(--text-color) 12%, transparent); }
+.hero { background:linear-gradient(120deg,#183d30,#276b4e); color:#fff; padding:1.45rem 1.7rem; border-radius:18px; margin-bottom:1.2rem; }
+.hero h1 { font-family:Manrope,sans-serif; font-size:1.8rem; margin:0; color:#fff; }
+.hero p { color:#e0eee6; margin:.35rem 0 0; font-size:.95rem; }
+.eyebrow { text-transform:uppercase; letter-spacing:.13em; font-size:.7rem; font-weight:700; opacity:.82; margin-bottom:.45rem; }
+div[data-testid="stMetric"] { background:var(--secondary-background-color); color:var(--text-color); border:1px solid color-mix(in srgb, var(--text-color) 13%, transparent); padding:1rem 1.05rem; border-radius:14px; box-shadow:0 2px 8px color-mix(in srgb, var(--text-color) 7%, transparent); }
+div[data-testid="stMetricLabel"], div[data-testid="stMetricLabel"] p { color:var(--text-color); opacity:.78; }
+div[data-testid="stMetricValue"] { color:var(--text-color); }
+.stTabs [data-baseweb="tab-list"] { gap:1.15rem; border-bottom:1px solid color-mix(in srgb, var(--text-color) 14%, transparent); }
+.stTabs [data-baseweb="tab"] { padding:.75rem .15rem; color:var(--text-color); }
+div[data-testid="stExpander"] { background:var(--secondary-background-color); border:1px solid color-mix(in srgb, var(--text-color) 13%, transparent); border-radius:12px; }
+.upload-card { background:var(--secondary-background-color); border:1px dashed color-mix(in srgb, var(--text-color) 30%, transparent); border-radius:16px; padding:2rem; text-align:center; color:var(--text-color); }
+.upload-card h3 { color:var(--text-color); margin:.5rem 0; }
+.small-note { color:var(--text-color); opacity:.72; font-size:.84rem; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -78,7 +79,7 @@ with st.sidebar:
 st.markdown('<div class="hero"><div class="eyebrow">Fabric inspection · workspace</div><h1>Fabric quality analysis</h1><p>Measure weave, spot defects, and review fabric color and texture.</p></div>', unsafe_allow_html=True)
 
 if not upload:
-    st.markdown('<div class="upload-card"><div style="font-size:2rem">🪡</div><h3 style="color:#182923;margin:.5rem 0">Start with a fabric photo</h3><div>Upload a close-up image from the left panel to see your quality dashboard.</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="upload-card"><div style="font-size:2rem">🪡</div><h3>Start with a fabric photo</h3><div>Upload a close-up image from the left panel to see your quality dashboard.</div></div>', unsafe_allow_html=True)
     st.markdown("#### What you can inspect")
     info_cols = st.columns(4)
     for col, icon, title, detail in zip(info_cols, ["〰️", "🔎", "🎨", "▦"], ["Thread count", "Surface defects", "Color profile", "Texture & weave"], ["FFT and peak-based TPI estimates", "Potential holes, stains, and missing yarn", "RGB, HSV, and reference color difference", "Regularity and texture descriptors"]):
@@ -180,3 +181,4 @@ st.divider()
 json_bytes = json.dumps(result, indent=2, default=_np).encode("utf-8")
 st.download_button("Download full analysis (JSON)", json_bytes, file_name="fabric_analysis.json", mime="application/json", type="primary")
 st.caption("Use measurements as inspection support. Image quality, lighting, fabric type, and scale calibration can affect results.")
+
