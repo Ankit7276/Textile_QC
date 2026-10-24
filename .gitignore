@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+loomlab_history.db
+loomlab_history.db-shm
+loomlab_history.db-wal
