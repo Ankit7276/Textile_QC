@@ -75,3 +75,7 @@ The app does not include user accounts or per-user permissions. Anyone who can a
 ## Limitations
 
 Results depend on image scale, focus, resolution, lighting, camera white balance, fabric type, and weave orientation. Defects can be missed, merged, or mislabeled. Color values from ordinary photos are not laboratory color measurements. Always confirm important findings against the original fabric and a calibrated measurement process.
+
+## Run the automated tests
+
+From the project folder, run python -m unittest discover -s tests -v. The tests use synthetic images and do not require sample fabric photos.

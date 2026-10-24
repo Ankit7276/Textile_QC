@@ -3,3 +3,4 @@ __pycache__/
 loomlab_history.db
 loomlab_history.db-shm
 loomlab_history.db-wal
+.test-venv/
